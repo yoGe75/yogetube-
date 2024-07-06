@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YogeTube</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="video.css">
+    <link rel="stylesheet" href="sidebar.css">
+
+    <link rel="icon" href="youtube icon.ico">
+    <style>
+p{
+  font-family: Roboto , Arial;
+  margin-top: 0;
+  margin-bottom:0;
+}
+
+body{
+  margin: 0px;
+  padding-top: 80px;
+  padding-left: 96px;
+  padding-right: 26px;
+  background-color:rgb(248, 248, 248);
+  
+}
+
+.header{
+  height: 55px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  right:0px;
+
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(228,228,228);
+  z-index: 100;
+}
+
+.left-section{
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu{
+  height: 22px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.youtube-logo{
+  height: 40px;
+}
+
+.middle-section{
+  flex: 1;
+  margin-left: 70px;
+  margin-right: 35px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.right-section{
+  width: 180px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0px;
+}
+
+.search-bar{
+  flex: 1;
+  height: 36px;
+  padding-left: 10px;
+  font-size: 16px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(192,192,192);
+  border-radius: 2px;
+  box-shadow: inset 1px 2px 3px rgba(0,0,0,0.05);
+  width: 0;
+}
+
+.search-bar::placeholder{
+  font-family: Roboto,Arial;
+  font-size: 16px;
+}
+
+.search-icon{
+  height: 25px;
+  margin-top: 4px;
+}
+
+.search-button{
+  height: 39px;
+  width: 60px;
+  background-color:rgb(240,240,240) ;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(192,192,192);
+  margin-left: -2px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.search-button .tooltip{
+  position: absolute;
+  background-color: grey;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  bottom: -30px;
+  right: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.search-button:hover .tooltip{
+  opacity: 1;
+}
+
+.voice-search-button{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(248,248,248);
+}
+
+.voice-search-icon{
+  height: 24px;
+  margin-top: 4px;
+  margin-right: 1px;
+}
+
+.upload-icon{
+  height: 24px;
+}
+
+.youtube-apps-icon{
+  height: 24px;
+}
+
+.notifications-icon{
+  height: 24px;
+}
+
+.notifications-icon-container{
+  position: relative;
+}
+
+.notifications-count{
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  background-color: rgb(200,0,0);
+  color: white;
+  font-family: Roboto,Arial;
+  font-size:11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  border-radius: 30px;
+}
+
+.current-user-picture{
+  height: 32px;
+  border-radius: 16px;
+}
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 55px;
+  background-color: white;
+  width: 72px;
+  z-index: 200;
+  padding-top: 5px;
+}
+
+.sidebar-link{
+  height: 76px;
+  margin-bottom: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.sidebar-link:hover{
+  background-color: lightgray;
+}
+
+.sidebar-link img{
+  height: 24px;
+  margin-bottom: 2px;
+}
+
+.sidebar-link div{
+  font-family: Roboto,Arial;
+  font-size: 10px;
+}
+
+.thumbnail{
+  width: 100%;
+  border-radius: 12px;
+}
+
+.video-title{
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  margin-bottom: 12px;
+}
+
+.video-info-grid{
+  display: grid; grid-template-columns: 50px 1fr;
+}
+
+.profile-picture{
+  width: 40px;
+  border-radius: 50px;
+}
+
+.thumbnail-row{
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.video-author{
+  font-size: 12px;
+  color: rgb(96,96,96);
+  margin-bottom: 4px;
+}
+
+.video-stats{
+  font-size: 12px;
+  color: rgb(96,96,96);
+}
+
+.video-grid{
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 40px;
+}
+
+@media(max-width: 750px) {
+
+  .video-grid {
+  
+  grid-template-columns: 1fr 1fr;
+  }
+  
+}
+  
+@media (min-width: 751px) and (max-width: 999px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+  
+@media (min-width: 1000px) {
+  .video-grid {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.video-time{
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  font-family: Roboto,Arial;
+  font-size: 12px;
+  font-weight: 500%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+
+
+
+
+    </style>
+  </head>
+
+  <body style="height: 1400px;">
+    <header class="header">
+      <div class="left-section">
+        <img class="hamburger-menu" src="yt icon.svg">
+        <a href="https://www.youtube.com/"><img class="youtube-logo" src="youtube icon.svg"></a>
+      </div>
+      <div class="middle-section"><input class="search-bar" type="text" placeholder="Search">
+        <button class="search-button">
+          <img class="search-icon" 
+          src="video search.svg">
+          <div class="tooltip">Search</div>
+        </button>
+        <button class="voice-search-button">
+          <img class="voice-search-icon"
+           src="video mike.svg">
+        </button>
+      </div>
+      <div class="right-section">
+        <img class="upload-icon"
+        src="video plus.svg">
+        <img class="youtube-apps-icon"
+        src="video bar.svg">
+        <div class="notifications-icon-container">
+          <img class="notifications-icon"
+          src="video bell.svg">
+          <div class="notifications-count">5</div>
+        </div>
+        <img class="current-user-picture"
+        src="hn.jpg">
+      </div>
+    </header>
+
+    <nav class="sidebar">
+      <div class="sidebar-link">
+        <img src="home button.svg">
+        <div>Home</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="explore button.svg">
+        <div>Explore</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="subscription button.svg">
+        <div>Subscriptions</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="yt originals button.svg">
+        <div>Originals</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="yt muscic button.svg">
+        <div>YouTube Music</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="yt library button.svg">
+        <div>Library</div>
+      </div>
+    </nav>
+<main>
+  <section class="video-grid">
+      <!-- ******************************** -->
+  <div class="video-preview">
+        <div class="thumbnail-row">
+          <a href="https://youtu.be/31pdm7lxe1c?feature=shared"><img class="thumbnail" src="carbs.jpg"></a>
+          <div class="video-time">8:03</div>
+        </div>
+        <div class="video-info-grid">
+        <div class="channel-picture">
+          <img class="profile-picture" src="shreardo.jpg">
+        </div>
+        <div class="video-info">
+          <p class="video-title">
+            Carbs
+          </p>
+          <p class="video-author">
+            Shreakardo
+          </p>
+          <p class="video-stats">
+            4.7M views &bull; 8 months ago
+          </p>
+        </div>
+        </div>
+  </div>
+    <!-- ******************************** -->
+  <div class="video-preview">
+        <div class="thumbnail-row">
+          <a href="https://youtu.be/lOKASgtr6kU?feature=shared"><img class="thumbnail" src="mr boii.webp"></a>
+          <div class="video-time">15:03</div>
+        </div>
+        <div class="video-info-grid">
+        <div class="channel-picture">
+          <img class="profile-picture" src="mr beast.jpg">
+        </div>
+        <div class="video-info">
+          <p class="video-title">
+            I Abandoned 100 Rescued Dogs!
+          </p>
+          <p class="video-author">
+            MrBeast
+          </p>
+          <p class="video-stats">
+            108M views &bull; 1 day ago
+          </p>
+        </div>
+        </div>
+  </div> 
+    <!-- ******************************** -->
+  <div class="video-preview">
+      <div class="thumbnail-row">
+        <a href="https://youtu.be/aJKPk1MriFo?feature=shared"><img class="thumbnail" src="one boii.webp"></a>
+        <div class="video-time">1.41</div>
+      </div>
+      <div class="video-info-grid">
+      <div class="channel-picture">
+        <img class="profile-picture" src="netflix.jpg">
+      </div>
+      <div class="video-info">
+        <p class="video-title">
+          THE ONE PIECE | Special Announcement | Netflix
+        </p>
+        <p class="video-author">
+          Netflix
+        </p>
+        <p class="video-stats">
+          2.4M views &bull; 9 days ago
+        </p>
+      </div>
+      </div>
+  </div>
+    <!-- ******************************** -->
+  <div class="video-preview">
+      <div class="thumbnail-row">
+        <a href="https://youtu.be/ar3gEAT2h28?feature=shared"><img class="thumbnail" src="dude boii.webp"></a>
+        <div class="video-time">27:54</div>
+      </div>
+      <div class="video-info-grid">
+      <div class="channel-picture">
+        <img class="profile-picture" src="dude perfect.jpg">
+      </div>
+      <div class="video-info">
+        <p class="video-title">
+          Mystery Detective Battle
+        </p>
+        <p class="video-author">
+          Dude Perfect
+        </p>
+        <p class="video-stats">
+          4.6M views &bull; 10 days ago
+        </p>
+      </div>
+      </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/UkHg42b22U4?feature=shared"><img class="thumbnail" src="miner boii.webp"></a>
+      <div class="video-time">11:48</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="business insider.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        How Miners Find, Cut, And Transport The Most Expensive Amethysts... <!-- In The World | So Expensive -->
+      </p>
+      <p class="video-author">
+        Business Insider
+      </p>
+      <p class="video-stats">
+        1.8M views &bull; 1 months ago
+      </p>
+    </div>
+    </div>
+  </div>
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/xkt4HEEgoSE?feature=shared"><img class="thumbnail" src="blender boii.webp"></a>
+      <div class="video-time">10:51</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="blender guru.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Beginner Blender 4.0 Tutorial - Part 14: Finale!
+      </p>
+      <p class="video-author">
+        Blender Guru
+      </p>
+      <p class="video-stats">
+        51K views &bull; 2 weeks ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/MG1K1mKQb4o?feature=shared"><img class="thumbnail" src="cars edit.webp"></a>
+      <div class="video-time">0:32</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="rebel.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        CARS - Lightning McQueen Edit 🏆 (4K)
+      </p>
+      <p class="video-author">
+        Rebel
+      </p>
+      <p class="video-stats">
+        54K views &bull; 2 months ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/nILv4VN9IaA?feature=shared"><img class="thumbnail" src="sppedymeaty.webp"></a>
+      <div class="video-time">2:34</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="daddyspeedy.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        I Show The Meat (Official Video)
+      </p>
+      <p class="video-author">
+        DaddySpeed
+      </p>
+      <p class="video-stats">
+        5.4M views &bull; 2 months ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/F9U-yoJbgWs?feature=shared"><img class="thumbnail" src="gen v.webp"></a>
+      <div class="video-time">1:50</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="ap.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        The Boys – Season 4 Official Teaser Trailer | Prime Video
+      </p>
+      <p class="video-author">
+        Prime Video
+      </p>
+      <p class="video-stats">
+        11M views &bull; 3 weeks ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/LDU_Txk06tM?feature=shared"><img class="thumbnail" src="crab.webp"></a>
+      <div class="video-time">3:13</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="rave.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Noisestorm - Crab Rave [Monstercat Release]
+      </p>
+      <p class="video-author">
+        Monstercat Instinct
+      </p>
+      <p class="video-stats">
+        277M views &bull; 5 years ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/GFLl9jt0mC0?feature=shared"><img class="thumbnail" src="kungfu booii.webp"></a>
+      <div class="video-time">19:20</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="voo memes.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        KUNG FU BOI 1: ADVENTURES
+      </p>
+      <p class="video-author">
+        Vo Memes
+      </p>
+      <p class="video-stats">
+        7.5M views &bull; 2 years ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/cCEsaJsu28A?feature=shared"><img class="thumbnail" src="sma.webp"></a>
+      <div class="video-time">35:30</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="sulek.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Winter Bulk Day 62-Arms
+      </p>
+      <p class="video-author">
+        Sam Sulek
+      </p>
+      <p class="video-stats">
+        164K views &bull; 11 hours ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/otNh9bTjXWg?feature=shared"><img class="thumbnail" src="wonka.webp"></a>
+      <div class="video-time">2:27</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="bros.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        WONKA | Official Trailer
+      </p>
+      <p class="video-author">
+        Warner Bros
+      </p>
+      <p class="video-stats">
+        38M views &bull; 5 months ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/_inKs4eeHiI?feature=shared"><img class="thumbnail" src="kung fu panda.webp"></a>
+      <div class="video-time">2:31</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="univeral pictures.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Kung Fu Panda 4 | Official Trailer (Universal Pictures) - HD
+      </p>
+      <p class="video-author">
+        Universal Pictures India
+      </p>
+      <p class="video-stats">
+        9M views &bull; 2 weeks ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/HkIKAnwLZCw?feature=shared"><img class="thumbnail" src="solo.webp"></a>
+      <div class="video-time">2:11</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="crunchy.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Solo Leveling | OFFICIAL TRAILER 4
+      </p>
+      <p class="video-author">
+        Crunchyroll
+      </p>
+      <p class="video-stats">
+        1.8M views &bull; 2 weeks ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/cpraXaw7dyc?feature=shared"><img class="thumbnail" src="optimum pride.webp"></a>
+      <div class="video-time">1:44</div>
+    </div>
+    <div class="video-info-grid">
+    <div class="channel-picture">
+      <img class="profile-picture" src="tesla.jpg">
+    </div>
+    <div class="video-info">
+      <p class="video-title">
+        Optimus - Gen 2
+      </p>
+      <p class="video-author">
+        Tesla
+      </p>
+      <p class="video-stats">
+        3.2M views &bull; 2 weeks ago
+      </p>
+    </div>
+    </div>
+  </div> 
+  <!-- ******************************** -->
+  
+
+  </section>
+</main>
+
+  </body>
+</html>
